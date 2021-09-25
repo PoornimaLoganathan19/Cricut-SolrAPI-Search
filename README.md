@@ -1,6 +1,9 @@
-# OnlineRetai
+# OnlineRetail
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.6.
+
+## My Responsibilities in this project
+This project has Apache Solr API integeration developed based on spring boot framework to support full-text search and filter-based search for products.
 
 ## Development server
 
