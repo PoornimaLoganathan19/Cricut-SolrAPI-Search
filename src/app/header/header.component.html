@@ -1,0 +1,178 @@
+<header>
+  <div class="logo">
+    <img
+      [routerLink]="['/']"
+      src="../assets/cricut/media/logo.jpg"
+      width="100px"
+    />
+  </div>
+  <ul class="menu">
+    <li class="nav-link">
+      <a>Experience</a>
+    </li>
+    <li id="categoriesPopup" class="nav-link" (click)="categoriesModal.show()">
+      <a>Products</a>
+    </li>
+    <li class="nav-link">
+      <a>Projects</a>
+    </li>
+  </ul>
+  <div class="menu-icon">
+    <div class="menu-desk">
+      <img [routerLink]="['/search']" src="../assets/images/search.png" />
+      <img
+        id="loggedOut"
+        [routerLink]="['/login']"
+        src="../assets/images/user.png"
+      />
+      <div class="user" id="loggedIn">
+        <div
+          class="user-icon"
+          [popover]="userDetail"
+          [popoverCloseOnMouseOutside]="false"
+        >
+          <div id="userInitial"></div>
+          <popover-content
+            #userDetail
+            class="popover"
+            [closeOnClickOutside]="false"
+          >
+            <div class="user-detail">
+              <p id="userFullName"></p>
+              <button
+                mdbBtn
+                mdbWavesEffect
+                type="button"
+                class="sign-out"
+                (click)="signOut()"
+              >
+                Sign out
+              </button>
+            </div>
+          </popover-content>
+        </div>
+      </div>
+      <div (click)="showCart()" class="cart">
+        <img src="../assets/images/cart.png" /><span
+          class="counter"
+          id="cartNumber"
+        ></span>
+      </div>
+    </div>
+    <div class="menu-mb">
+      <img src="../assets/images/search.png" />
+      <img src="../assets/images/menu.png" />
+    </div>
+  </div>
+</header>
+
+<div
+  mdbModal
+  #categoriesModal="mdbModal"
+  class="modal fade popup-menu"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="categoriesModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document" *ngIf="categoriesResponse">
+    <div class="modal-content">
+      <div class="modal-header">
+        <header>
+          <div class="logo">
+            <img
+              [routerLink]="['/']"
+              (click)="categoriesModal.hide()"
+              src="../assets/cricut/media/logo.jpg"
+              width="100px"
+            />
+          </div>
+          <ul class="pop-menu">
+            <li
+              class="nav-item"
+              *ngFor="let parent of categoriesResponse.response.docs"
+            >
+              <div *ngIf="parent.categoryId == selectedCategoryId">
+                <a class="nav-link active">{{ parent.displayName }}</a>
+              </div>
+              <div
+                *ngIf="parent.categoryId != selectedCategoryId"
+                (click)="onCategorySelected(parent.categoryId)"
+              >
+                <a class="nav-link">{{ parent.displayName }}</a>
+              </div>
+            </li>
+          </ul>
+
+          <div class="product">
+            <a (click)="categoriesModal.hide()" class="back">
+              <img src="../assets/images/arrow-left.png" /> Back
+            </a>
+
+            <h2>{{ selectedCategoryName }}</h2>
+          </div>
+        </header>
+      </div>
+      <div class="modal-body">
+        <div class="car-list">
+          <div *ngFor="let parent of categoriesResponse.response.docs">
+            <div *ngIf="parent.categoryId == selectedCategoryId">
+              <div class="row" *ngIf="!parent.category2">
+                <div
+                  class="col-sm-6 col-lg-4 "
+                  *ngFor="let child of parent._childDocuments_"
+                >
+                  <div class="car-item">
+                    <img
+                      (click)="goToCategory(child.categoryId)"
+                      src="{{ child.url }}"
+                      (click)="categoriesModal.hide()"
+                      width="200"
+                    />
+                    <div class="cont">
+                      <h4
+                        (click)="goToCategory(child.categoryId)"
+                        (click)="categoriesModal.hide()"
+                      >
+                        {{ child.displayName }}
+                      </h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row" *ngIf="parent.category2">
+                <div
+                  class="col-sm-6 col-lg-4 "
+                  *ngFor="let cat2 of parent.category2"
+                >
+                  <h3>{{ cat2 }}</h3>
+                  <div
+                    class="car-item"
+                    *ngFor="let child of parent._childDocuments_"
+                  >
+                    <div *ngIf="child.category == cat2">
+                      <img
+                        (click)="goToCategory(child.categoryId)"
+                        src="{{ child.url }}"
+                        (click)="categoriesModal.hide()"
+                        width="200"
+                      />
+                      <div class="cont">
+                        <h4
+                          (click)="goToCategory(child.categoryId)"
+                          (click)="categoriesModal.hide()"
+                        >
+                          {{ child.displayName }}
+                        </h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

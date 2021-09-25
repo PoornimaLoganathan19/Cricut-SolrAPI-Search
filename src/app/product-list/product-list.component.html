@@ -1,0 +1,32 @@
+<div class="car-list">
+  <div class="row " *ngIf="topProductsResponse">
+    <div class="col-sm-6 col-lg-4 car-item" *ngFor="let product of topProducts">
+      <img
+        (click)="goToProduct(product.productId)"
+        src="{{ product.url }}"
+        height="200px"
+      />
+
+      <div class="cont">
+        <h4>{{ product.categoryName }} {{ product.displayName }}</h4>
+
+        <p>{{ product.shortDescription }}</p>
+
+        <div class="price">
+          Starts from MSRP
+
+          <div class="currency">
+            {{ product.priceValue | currency: currency:"symbol":"1.0" }}
+          </div>
+        </div>
+        <a (click)="goToProduct(product.productId)"
+          >KNOW MORE <img src="../assets/images/arrow-blue.png" />
+        </a>
+
+        <a class="right" (click)="addToCart(product.productId)"
+          >ADD TO CART <img src="../assets/images/arrow-blue.png"
+        /></a>
+      </div>
+    </div>
+  </div>
+</div>

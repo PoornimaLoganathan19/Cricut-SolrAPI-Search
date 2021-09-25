@@ -1,0 +1,131 @@
+.account {
+  background-color: #000000;
+  height: calc(100vh - 80px);
+  overflow: hidden;
+  img {
+    width: 100%;
+  }
+  .account-box {
+    margin: 0;
+    position: absolute;
+    top: 80px;
+    width: 100%;
+    height: calc(100vh - 80px);
+    overflow: auto;
+
+    .account-cont {
+      margin: 40px;
+      color: #ffffff;
+      padding: 0;
+
+      h2 {
+        border-top: 10px solid #ffffff;
+        padding-top: 10px;
+        font-weight: bold;
+        font-size: 36px;
+        line-height: 44px;
+        padding-bottom: 20px;
+      }
+
+      label {
+        font-size: 14px;
+        line-height: 17px;
+        color: #ffffff !important;
+      }
+      .form-control {
+        border-radius: unset;
+        background-clip: unset;
+        border: unset;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 17px;
+        color: #000000;
+      }
+      .input-group-text {
+        background: #ffffff;
+        border: unset;
+        border-radius: unset;
+        cursor: pointer;
+      }
+      .custom-control-label {
+        padding-top: 4px;
+      }
+      .custom-control-input:checked ~ .custom-control-label::before,
+      .custom-checkbox .custom-control-label::before {
+        border-radius: unset;
+      }
+      .custom-control-input:checked ~ .custom-control-label::after {
+        background-image: unset;
+      }
+      .plain {
+        text-decoration: unset;
+        display: inherit;
+        margin: 10px 0px;
+      }
+      .btn-account {
+        width: 100%;
+        background-color: #189dd4;
+        margin: 10px 0px;
+        border-radius: unset;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+        text-transform: none;
+        color: #ffffff;
+      }
+      .btn-outline-account,
+      .btn-outline-account:hover {
+        width: 100%;
+        border: 1px solid #ffffff;
+        margin: 0;
+        border-radius: unset;
+        margin-top: 5px;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+        color: #ffffff;
+      }
+      .btn-outline-login,
+      .btn-outline-login:hover {
+        width: 45%;
+        border: 1px solid #ffffff;
+        margin: 0;
+        border-radius: unset;
+        margin-top: 5px;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+        color: #ffffff;
+      }
+      a {
+        font-size: 12px;
+        line-height: 15px;
+        text-decoration-line: underline;
+        color: #ffffff;
+      }
+      hr {
+        border-top: 1px solid rgb(253, 253, 253);
+      }
+    }
+  }
+}
+.account-box::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #00000000;
+}
+.account-box::-webkit-scrollbar {
+  width: 5px;
+  background-color: #00000000;
+}
+
+.account-box::-webkit-scrollbar-thumb {
+  background-color: #00000000;
+  border: unset;
+}
+.disable {
+  cursor: unset;
+  text-decoration: none !important;
+}

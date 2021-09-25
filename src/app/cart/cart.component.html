@@ -1,0 +1,105 @@
+<div class="cart-block" *ngIf="cartResponse">
+  <div class="row summary">
+    <div class="col-sm-12 summary-block">
+      <div class="row summary-left">
+        <div class="col-sm-12 ">
+          <h2>Cart Summary</h2>
+        </div>
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item head-bg">
+          <div class="row item-list">
+            <div class="col-sm-2 item">
+              <h2 class="un-float">Image</h2>
+            </div>
+            <div class="col-sm-5 item">
+              <h2>Name</h2>
+            </div>
+            <div class="col-sm-3 item">
+              <h2 class="un-float">Qty</h2>
+            </div>
+            <div class="col-sm-1 item">
+              <h2 class="un-float">Price</h2>
+            </div>
+            <div class="col-sm-1 item">
+              <h2 class="float-right">Total</h2>
+            </div>
+          </div>
+        </li>
+        <li
+          class="list-group-item"
+          *ngFor="let entry of cartResponse.data.entries"
+        >
+          <div class="row item-list">
+            <div
+              class="col-sm-2 item img-cont"
+              (click)="goToProduct(entry.product.productId)"
+            >
+              <img src="{{ entry.product.url }}" />
+            </div>
+            <div class="col-sm-5 item">
+              <p>{{ entry.product.displayName }}</p>
+            </div>
+            <div class="col-sm-3 item">
+              <div class="qty">
+                <p>{{ entry.quantity }}</p>
+              </div>
+            </div>
+            <div class="col-sm-1 item">
+              <div class="price">
+                <p>
+                  {{
+                    entry.product.price.priceValue
+                      | currency: currency:"symbol":"1.0"
+                  }}
+                </p>
+              </div>
+            </div>
+            <div class="col-sm-1 item">
+              <h3>
+                {{ entry.totalPrice | currency: currency:"symbol":"1.0" }}
+              </h3>
+            </div>
+            <!-- <div class="delete-btn">
+              <i class="fas fa-times delete"></i>
+            </div> -->
+          </div>
+        </li>
+      </ul>
+      <div class="row summary-btm-bar">
+        <div class="col-sm-6">
+          <div class="btn-box-btm" *ngIf="showCheckoutButton">
+            <button
+              type="button"
+              class="summary-btn"
+              mdbBtn
+              mdbWavesEffect
+              (click)="showCategoriesPopup()"
+            >
+              Keep Shopping
+            </button>
+            <button
+              (click)="goToCheckout()"
+              type="button"
+              class="summary-fill-btn "
+              mdbBtn
+              mdbWavesEffect
+            >
+              Proceed to Checkout
+            </button>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <p>
+            Total Price :
+            <span id="totalPrice">
+              {{
+                cartResponse.data.totalPrice | currency: currency:"symbol":"1.0"
+              }}
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

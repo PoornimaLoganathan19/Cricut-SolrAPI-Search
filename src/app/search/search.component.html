@@ -1,0 +1,269 @@
+<div class="search">
+  <div class="search-box">
+    <div class="serch-text">
+      <input
+        id="searchInput"
+        class="form-control search-tag"
+        type="text"
+        [(ngModel)]="searchText"
+        (keydown.enter)="search()"
+        placeholder="Search Cricut by.."
+        autofocus
+      />
+      <img (click)="search()" src="../assets/images/search.png" alt="" />
+    </div>
+    <div class="row">
+      <div class="col-sm-6 search-result">
+        <p>Popular Searches</p>
+        <ul class="list-group search-list">
+          <a (click)="goToCategory('cricut_maker')">
+            <li class="list-group-item">Cricut Maker</li>
+          </a>
+          <a (click)="goToCategory('basic_machine_tools')">
+            <li class="list-group-item">Basic Machine Tools</li>
+          </a>
+          <a (click)="goToCategory('self_healing_mats')">
+            <li class="list-group-item">Self Healing Mats</li>
+          </a>
+        </ul>
+      </div>
+      <div class="col-sm-6 search-result">
+        <p>How do I..</p>
+        <ul class="list-group search-list">
+          <a [routerLink]="['/']">
+            <li class="list-group-item">Go To Home</li>
+          </a>
+          <a>
+            <li class="list-group-item">Experience</li>
+          </a>
+          <a>
+            <li class="list-group-item">Projects</li>
+          </a>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+<!-- <div class="search">
+  <div class="search-block">
+    <img class="icon" src="../assets/images/search.png" />
+    <input class="form-control search-tag" type="text" placeholder="BMW X1" />
+
+    <img class="close" src="../assets/images/close-lg.png" />
+  </div>
+  <div class="search-result">
+    <div class="top-page">
+      <p>Showing: <b>1–10 </b> of <b>128</b> results</p>
+      <div class="per-page">
+        <p>Show per page</p>
+        <select class="browser-default custom-select" id="inputGroupSelect01">
+          <option value="1" selected>1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="result">
+      <div class="row product-item">
+        <div class="col-sm-6 product-img">
+          <img src="../assets/images/car_x4.png" />
+        </div>
+        <div class="col-sm-6 product-detail">
+          <h1>X1</h1>
+          <p>Lorem ipsum dolor sit amet</p>
+          <div class="price">
+            Starts from MSRP
+            <div class="currency">$34,950</div>
+          </div>
+          <a href=""
+            >FIND OUT MORE <img src="../assets/images/arrow-blue.png"
+          /></a>
+          <a class="right" href=""
+            >BUILD YOUR OWN <img src="../assets/images/arrow-blue.png"
+          /></a>
+        </div>
+      </div>
+      <div class="row product-item">
+        <div class="col-sm-6 product-img">
+          <img src="../assets/images/car_x4.png" />
+        </div>
+        <div class="col-sm-6 product-detail">
+          <h1>X1</h1>
+          <p>Lorem ipsum dolor sit amet</p>
+          <div class="price">
+            Starts from MSRP
+            <div class="currency">$34,950</div>
+          </div>
+          <a href=""
+            >FIND OUT MORE <img src="../assets/images/arrow-blue.png"
+          /></a>
+          <a class="right" href=""
+            >BUILD YOUR OWN <img src="../assets/images/arrow-blue.png"
+          /></a>
+        </div>
+      </div>
+      <div class="row product-item">
+        <div class="col-sm-6 product-img">
+          <img src="../assets/images/car_x4.png" />
+        </div>
+        <div class="col-sm-6 product-detail">
+          <h1>X1</h1>
+          <p>Lorem ipsum dolor sit amet</p>
+          <div class="price">
+            Starts from MSRP
+            <div class="currency">$34,950</div>
+          </div>
+          <a href=""
+            >FIND OUT MORE <img src="../assets/images/arrow-blue.png"
+          /></a>
+          <a class="right" href=""
+            >BUILD YOUR OWN <img src="../assets/images/arrow-blue.png"
+          /></a>
+        </div>
+      </div>
+      <div class="list-item">
+        <a href=""
+          >1. Lorem ipsum dolor sit amet, consectetur adipiscing elit</a
+        >
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae
+          facilisis felis. Suspendisse potenti. Vestibulum ante ipsum primis in
+          faucibus orci luctus et ultrices posuere cubilia Curae.
+        </p>
+      </div>
+      <div class="list-item">
+        <a href="">2. Lorem ipsum dolor sit amet, consectetur</a>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae
+          facilisis felis. Suspendisse potenti. Vestibulum ante ipsum primis in
+          faucibus orci luctus et ultrices posuere cubilia Curae.
+        </p>
+      </div>
+      <div class="list-item">
+        <a href=""
+          >3. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+          vel facilisis erat, sed scelerisque diam Phasellus placerat tellus
+          nibh, a vehicula mi blandit sit amet.</a
+        >
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae
+          facilisis felis. Suspendisse potenti. Vestibulum ante ipsum primis in
+          faucibus orci luctus et ultrices posuere cubilia Curae.
+        </p>
+      </div>
+      <div class="list-item">
+        <a href="">4. Lorem ipsum dolor sit amet, consectetur</a>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae
+          facilisis felis. Suspendisse potenti. Vestibulum ante ipsum primis in
+          faucibus orci luctus et ultrices posuere cubilia Curae.
+        </p>
+      </div>
+      <div class="list-item">
+        <a href="">5. Lorem ipsum dolor sit amet, consectetur</a>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae
+          facilisis felis. Suspendisse potenti. Vestibulum ante ipsum primis in
+          faucibus orci luctus et ultrices posuere cubilia Curae.
+        </p>
+      </div>
+      <div class="list-item">
+        <a href="">6. Lorem ipsum dolor sit amet, consectetur</a>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae
+          facilisis felis. Suspendisse potenti. Vestibulum ante ipsum primis in
+          faucibus orci luctus et ultrices posuere cubilia Curae.
+        </p>
+      </div>
+      <div class="list-item">
+        <a href="">7. Lorem ipsum dolor sit amet, consectetur</a>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae
+          facilisis felis. Suspendisse potenti. Vestibulum ante ipsum primis in
+          faucibus orci luctus et ultrices posuere cubilia Curae.
+        </p>
+      </div>
+      <div class="list-item">
+        <a href="">8. Lorem ipsum dolor sit amet, consectetur</a>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae
+          facilisis felis. Suspendisse potenti. Vestibulum ante ipsum primis in
+          faucibus orci luctus et ultrices posuere cubilia Curae.
+        </p>
+      </div>
+      <div class="list-item">
+        <a href="">9. Lorem ipsum dolor sit amet, consectetur</a>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae
+          facilisis felis. Suspendisse potenti. Vestibulum ante ipsum primis in
+          faucibus orci luctus et ultrices posuere cubilia Curae.
+        </p>
+      </div>
+      <div class="list-item">
+        <a href="">10. Lorem ipsum dolor sit amet, consectetur</a>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae
+          facilisis felis. Suspendisse potenti. Vestibulum ante ipsum primis in
+          faucibus orci luctus et ultrices posuere cubilia Curae.
+        </p>
+      </div>
+
+      <nav aria-label="Page navigation example">
+        <ul class="pagination pg-blue">
+          <li class="page-item">
+            <a class="page-link" aria-label="Previous">
+              <span aria-hidden="true">&#10216;</span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link active">1</a></li>
+          <li class="page-item"><a class="page-link">2</a></li>
+          <li class="page-item"><a class="page-link">3</a></li>
+          <li class="page-item"><a class="page-link">4</a></li>
+          <li class="page-item"><a class="page-link">5</a></li>
+          <li class="page-item"><a class="page-link">....</a></li>
+          <li class="page-item"><a class="page-link">13</a></li>
+          <li class="page-item">
+            <a class="page-link" aria-label="Next">
+              <span aria-hidden="true">&#10217;</span>
+              <span class="sr-only">Next</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div> -->
+<div class="notification">
+  <div class="success-msg">
+    <div class="msg">
+      <div class="round">
+        <img src="../assets/images/success-mark.png" />
+      </div>
+
+      <p>This the style for Success notification</p>
+      <img src="../assets/images/close-white.png" />
+    </div>
+  </div>
+  <div class="error-msg">
+    <div class="msg">
+      <img class="error" src="../assets/images/error-icon.png" />
+
+      <p>This the style for Failure notification</p>
+      <img src="../assets/images/close-white.png" />
+    </div>
+  </div>
+  <div class="warning-msg">
+    <div class="msg">
+      <div class="round">
+        <img class="warning" src="../assets/images/warning-icon.png" />
+      </div>
+
+      <p>This the style for Information notification</p>
+      <img src="../assets/images/close-white.png" />
+    </div>
+  </div>
+</div>

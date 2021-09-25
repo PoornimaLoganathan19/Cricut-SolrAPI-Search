@@ -1,0 +1,324 @@
+<div class="title">
+  <a class="back" [routerLink]="['/cart']">
+    <img src="../assets/images/arrow-left.png" /> Back
+  </a>
+  <h1>checkout</h1>
+</div>
+
+<div class="stepper-head row justify-content-center">
+  <div class="col-sm-4">
+    <ul class="stepper stepper-horizontal step-details">
+      <li class="step completed" [routerLink]="['/shipping']">
+        <a> <span class="circle">1</span> </a>
+        <span class="label first">Shipping/Billing</span>
+      </li>
+      <li class="step active completed">
+        <a> <span class="circle">2</span></a>
+        <span class="label center">Payment</span>
+      </li>
+      <li class="step">
+        <a> <span class="circle">3</span></a>
+        <span class="label last">Review & Confirm</span>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="model-step" *ngIf="cardListResponse">
+  <div class="row adderss-block justify-content-center">
+    <div class="col-sm-8 summary-checkout">
+      <app-cart></app-cart>
+    </div>
+
+    <div class="col-sm-4 pay-block ">
+      <div class="payment ">
+        <h3>Credit/Debit Card</h3>
+        <div class="payment-item" *ngFor="let card of cardListResponse.data">
+          <div class="custom-control custom-radio">
+            <input
+              type="radio"
+              class="custom-control-input "
+              name="paymentMethod"
+              [(ngModel)]="cardId"
+              value="{{ card.id }}"
+              id="{{ card.id }}"
+            />
+            <label class="custom-control-label" for="{{ card.id }}">
+              {{ maskCardNumber(card.cardNumber) }}
+            </label>
+            <!-- <img class="card-img" src="../../assets/images/amex.png" alt="" /> -->
+          </div>
+          <p>{{ card.firstName }} {{ card.lastName }}</p>
+          <form [formGroup]="cvvForm">
+            <div class="cvv-data" *ngIf="card.id == cardId">
+              <input
+                type="text"
+                class="form-control col-sm-4"
+                placeholder="CVV"
+                formControlName="cvv"
+                [ngClass]="{
+                  'is-invalid': cvvSubmitted && getCvvFormValue.cvv.errors
+                }"
+              />
+              <div
+                *ngIf="cvvSubmitted && getCvvFormValue.cvv.errors"
+                class="invalid-feedback col-sm-8"
+              >
+                <div
+                  *ngIf="
+                    getCvvFormValue.cvv.errors.required ||
+                    getCvvFormValue.cvv.errors.pattern
+                  "
+                >
+                  Please enter the valid CVV
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <h3>Net Banking</h3>
+
+        <div class="action-item">
+          <button
+            type="submit"
+            outline="true"
+            mdbBtn
+            mdbWavesEffect
+            class="btn-outline"
+            (click)="addCardModal.show()"
+          >
+            Add
+          </button>
+          <button
+            (click)="checkoutPayment()"
+            type="submit"
+            outline="true"
+            mdbBtn
+            mdbWavesEffect
+            [disabled]="!cardId"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  mdbModal
+  #addCardModal="mdbModal"
+  tabindex="-1"
+  role="dialog"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="payment">
+          <form [formGroup]="paymentForm" (ngSubmit)="addCard()">
+            <div class="method">
+              <div class="creditCard">
+                <div class="card-form">
+                  <label for="firstName">First Name</label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="first name"
+                      formControlName="firstName"
+                      [ngClass]="{
+                        'is-invalid':
+                          submitted && getPaymentFormValue.firstName.errors
+                      }"
+                    />
+                    <div
+                      *ngIf="submitted && getPaymentFormValue.firstName.errors"
+                      class="invalid-feedback"
+                    >
+                      <div
+                        *ngIf="getPaymentFormValue.firstName.errors.required"
+                      >
+                        Please enter your first name
+                      </div>
+                      <div *ngIf="getPaymentFormValue.firstName.errors.pattern">
+                        First name is invalid
+                      </div>
+                    </div>
+                  </div>
+                  <label for="lastName">Last Name</label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="last name"
+                      formControlName="lastName"
+                      [ngClass]="{
+                        'is-invalid':
+                          submitted && getPaymentFormValue.lastName.errors
+                      }"
+                    />
+                    <div
+                      *ngIf="submitted && getPaymentFormValue.lastName.errors"
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="getPaymentFormValue.lastName.errors.required">
+                        Please enter your last name
+                      </div>
+                      <div *ngIf="getPaymentFormValue.lastName.errors.pattern">
+                        Last name is invalid
+                      </div>
+                    </div>
+                  </div>
+                  <label for="cardNumber">Card number</label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="9876543168439488"
+                      formControlName="cardNumber"
+                      [ngClass]="{
+                        'is-invalid':
+                          submitted && getPaymentFormValue.cardNumber.errors
+                      }"
+                    />
+                    <div
+                      *ngIf="submitted && getPaymentFormValue.cardNumber.errors"
+                      class="invalid-feedback"
+                    >
+                      <div
+                        *ngIf="getPaymentFormValue.cardNumber.errors.required"
+                      >
+                        Please provide the card number
+                      </div>
+                      <div
+                        *ngIf="getPaymentFormValue.cardNumber.errors.pattern"
+                      >
+                        Card number is invalid
+                      </div>
+                    </div>
+                  </div>
+                  <div class="input-group">
+                    <div class="cvv-data">
+                      <label for="cvv">CVV</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="921"
+                          formControlName="cvv"
+                          [ngClass]="{
+                            'is-invalid':
+                              submitted && getPaymentFormValue.cvv.errors
+                          }"
+                        />
+                        <div
+                          *ngIf="submitted && getPaymentFormValue.cvv.errors"
+                          class="invalid-feedback"
+                        >
+                          <div *ngIf="getPaymentFormValue.cvv.errors.required">
+                            Please provide the CVV
+                          </div>
+                          <div *ngIf="getPaymentFormValue.cvv.errors.pattern">
+                            CVV is invalid
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cvv-data">
+                      <label for="expiryMonth">month</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="09"
+                          formControlName="expiryMonth"
+                          [ngClass]="{
+                            'is-invalid':
+                              submitted &&
+                              getPaymentFormValue.expiryMonth.errors
+                          }"
+                        />
+                        <div
+                          *ngIf="
+                            submitted && getPaymentFormValue.expiryMonth.errors
+                          "
+                          class="invalid-feedback"
+                        >
+                          <div
+                            *ngIf="
+                              getPaymentFormValue.expiryMonth.errors.required
+                            "
+                          >
+                            Please provide the expiry month
+                          </div>
+                          <div
+                            *ngIf="
+                              getPaymentFormValue.expiryMonth.errors.pattern ||
+                              getPaymentFormValue.expiryMonth.errors.min ||
+                              getPaymentFormValue.expiryMonth.errors.max
+                            "
+                          >
+                            Expiry month is invalid
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cvv-data mr-zero">
+                      <label for="expiryYear">Year</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="2024"
+                          formControlName="expiryYear"
+                          [ngClass]="{
+                            'is-invalid':
+                              submitted && getPaymentFormValue.expiryYear.errors
+                          }"
+                        />
+                        <div
+                          *ngIf="
+                            submitted && getPaymentFormValue.expiryYear.errors
+                          "
+                          class="invalid-feedback"
+                        >
+                          <div
+                            *ngIf="
+                              getPaymentFormValue.expiryYear.errors.required
+                            "
+                          >
+                            Please provide the expiry year
+                          </div>
+                          <div
+                            *ngIf="
+                              getPaymentFormValue.expiryYear.errors.pattern ||
+                              getPaymentFormValue.expiryYear.errors.min ||
+                              getPaymentFormValue.expiryYear.errors.max
+                            "
+                          >
+                            ExpiryYear is invalid
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button
+                type="submit"
+                outline="true"
+                class="proceed "
+                mdbBtn
+                mdbWavesEffect
+              >
+                Save Payment
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

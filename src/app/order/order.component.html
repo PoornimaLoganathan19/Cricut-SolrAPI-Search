@@ -1,0 +1,74 @@
+<div class="cart-block" *ngIf="orderResponse">
+  <div class="row summary">
+    <div class="col-sm-12 summary-block">
+      <div class="row summary-left">
+        <div class="col-sm-12 ">
+          <h2>Order ID: {{ orderResponse.data.id }}</h2>
+        </div>
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item head-bg">
+          <div class="row item-list">
+            <div class="col-sm-2 item">
+              <h2 class="un-float">Image</h2>
+            </div>
+            <div class="col-sm-5 item">
+              <h2>Name</h2>
+            </div>
+            <div class="col-sm-3 item">
+              <h2 class="un-float">Qty</h2>
+            </div>
+            <div class="col-sm-1 item">
+              <h2 class="un-float">Price</h2>
+            </div>
+            <div class="col-sm-1 item">
+              <h2 class="float-right">Total</h2>
+            </div>
+          </div>
+        </li>
+        <li
+          class="list-group-item"
+          *ngFor="let entry of orderResponse.data.entries"
+        >
+          <div class="row item-list">
+            <div
+              class="col-sm-2 item img-cont"
+              (click)="goToProduct(entry.product.productId)"
+            >
+              <img src="{{ entry.product.url }}" />
+            </div>
+            <div class="col-sm-5 item">
+              <p>{{ entry.product.displayName }}</p>
+            </div>
+            <div class="col-sm-3 item">
+              <div class="qty">
+                <p>{{ entry.quantity }}</p>
+              </div>
+            </div>
+            <div class="col-sm-1 item">
+              <div class="price">
+                <p>{{ entry.product.price.priceValue }}</p>
+              </div>
+            </div>
+            <div class="col-sm-1 item">
+              <h3>${{ entry.totalPrice }}</h3>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="row summary-btm-bar">
+        <div class="col-sm-12">
+          <p>
+            Total Price :
+            <span id="totalPrice">
+              {{
+                orderResponse.data.totalPrice
+                  | currency: currency:"symbol":"3.0"
+              }}
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

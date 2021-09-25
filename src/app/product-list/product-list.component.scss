@@ -1,0 +1,142 @@
+.car-list {
+  margin: 0px 60px;
+  padding: 0;
+
+  img {
+    cursor: pointer;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .row {
+    margin: 0;
+  }
+
+  .car-item {
+    padding: 0;
+    margin-bottom: 10px;
+  }
+
+  .car-item:hover {
+    background: #ffffff;
+    border-radius: 4px;
+  }
+
+  .cont {
+    margin-bottom: 20px;
+    padding: 0 20px;
+  }
+
+  h4 {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    margin: 0;
+  }
+
+  p {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 13px;
+    margin-bottom: 10px;
+  }
+
+  .price {
+    font-size: 10px;
+    line-height: 12px;
+    margin: 10px 0px;
+    font-style: normal;
+    font-weight: normal;
+
+    .currency {
+      font-weight: bold;
+      font-size: 14px;
+      margin: 5px 0px;
+    }
+  }
+
+  a {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #189dd4;
+    margin-top: 4px;
+
+    img {
+      width: auto;
+      margin: unset;
+      display: inline-block;
+    }
+  }
+
+  .model-btn {
+    margin: 20px 0px;
+  }
+
+  .view-more {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border-radius: unset;
+    padding: 10px 20px;
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 17px;
+    background: #189dd4;
+    text-transform: none;
+  }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .car-list {
+    margin: 0;
+
+    p {
+      margin-bottom: 5px;
+    }
+
+    .price {
+      margin: 0px;
+      float: right;
+      padding: 10px 0px;
+    }
+
+    a {
+      display: block;
+      padding: 10px 0px;
+    }
+
+    .right {
+      float: none !important;
+    }
+
+    .view-more {
+      width: 80%;
+    }
+  }
+
+  .car-item img {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 767px) {
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .car-item {
+    a {
+      display: block;
+      padding: 5px 0px;
+    }
+
+    .right {
+      float: none !important;
+    }
+
+    .price {
+      float: right;
+    }
+  }
+}

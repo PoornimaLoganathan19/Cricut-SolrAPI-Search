@@ -1,0 +1,355 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #f2f2f2;
+  font-family: "Montserrat";
+  scroll-behavior: smooth;
+}
+
+.banner {
+  .carousel .carousel-indicators li {
+    width: 50px;
+    height: 2px;
+    border-radius: unset;
+    cursor: pointer;
+  }
+
+  .carousel-indicators .active {
+    height: 5px !important;
+  }
+
+  .carousel-inner {
+    height: 570px;
+  }
+
+  .carousel .carousel-control-next-icon {
+    display: none;
+  }
+}
+
+.right {
+  float: right !important;
+}
+
+.cart {
+  position: relative;
+  display: inline-block;
+}
+
+.counter {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #006dd1;
+  color: #ffffff;
+  font-size: 11px;
+  line-height: 5px;
+  padding: 5px;
+  border-radius: 50px;
+  font-weight: 600;
+}
+
+.form-control:focus {
+  box-shadow: unset;
+}
+
+.custom-select {
+  border-radius: unset;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  border-radius: unset;
+}
+
+.custom-checkbox .custom-control-label::before {
+  border-radius: unset;
+  height: 18px;
+  width: 18px;
+}
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::after {
+  background-image: unset;
+}
+
+.tile {
+  box-shadow: unset !important;
+}
+
+button {
+  text-transform: unset !important;
+  border-radius: unset !important;
+  box-shadow: unset !important;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  background-color: #189dd4 !important;
+}
+
+.ng5-slider {
+  .ng5-slider-bar {
+    height: 7px !important;
+  }
+
+  .ng5-slider-bubble.ng5-slider-limit {
+    bottom: -35px !important;
+  }
+
+  .ng5-slider-pointer {
+    width: 15px !important;
+    height: 15px !important;
+    top: -5px !important;
+    background-color: #0db9f0 !important;
+  }
+
+  .ng5-slider-pointer:after {
+    top: 6px !important;
+    left: 6px !important;
+    background: unset !important;
+  }
+
+  .ng5-slider-model-value,
+  .ng5-slider-model-high,
+  .ng5-slider-combined {
+    background: #189dd4 !important;
+    padding: 5px 10px !important;
+    color: #ffffff !important; //min-width: 100px;
+    text-align: center;
+    font-size: 12px !important;
+    line-height: 15px;
+  }
+
+  .ng5-slider-tick {
+    display: none !important;
+  }
+
+  .ng5-slider-pointer::before {
+    content: "";
+    position: absolute;
+    top: -7px;
+    right: 3px;
+    margin-left: -50px;
+    width: 0;
+    height: 0;
+    border-top: solid 8px #189dd4;
+    border-left: solid 5px transparent;
+    border-right: solid 5px transparent;
+  }
+
+  .ng5-slider-pointer:focus {
+    border: unset !important;
+    outline: unset !important;
+  }
+
+  .ng5-slider-bar {
+    background: #d9d9d9 !important;
+  }
+
+  .ng5-slider-selection {
+    background: linear-gradient(270deg, #189dd4 0%, #56e0f3 97.35%) !important;
+  }
+
+  .ng5-slider-selection-bar {
+    visibility: inherit !important;
+  }
+}
+
+.ng5-slider-ceil,
+.ng5-slider-floor {
+  opacity: 1 !important;
+  font-size: 10px !important;
+  top: 8px;
+}
+
+.mydp {
+  border: unset !important;
+
+  .selectiongroup {
+    border-radius: unset !important;
+    background-color: unset !important;
+    padding: 5px 0px;
+  }
+
+  .selection {
+    border-radius: unset !important;
+    border: 1px solid #000000 !important;
+    background-color: unset !important;
+  }
+
+  .selbtngroup {
+    background-color: unset !important;
+  }
+
+  .btnpicker {
+    background-color: unset !important;
+  }
+
+  .btnclearenabled {
+    background-color: unset !important;
+  }
+
+  .selector {
+    border: 1px solid #000000 !important;
+    border-radius: unset !important;
+  }
+}
+
+img:focus {
+  outline: unset;
+}
+
+.ngx-gallery-thumbnails .ngx-gallery-active {
+  outline: 2px solid #ffffff !important;
+  outline-offset: -15px !important;
+}
+
+.ngx-gallery-animation-slide .ngx-gallery-image.ngx-gallery-active {
+  background-size: auto 100% !important;
+}
+
+.ngx-gallery-image-wrapper {
+  z-index: 1 !important;
+}
+
+.inner-view {
+  canvas {
+    width: 100% !important;
+  }
+}
+
+/* ************** Login Popover ****************/
+.popover {
+  border: unset;
+}
+
+.popover.popover-content {
+  background-color: #ebebeb;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+  border: unset;
+  font-family: "Montserrat";
+}
+
+.popover.popover-content.bs-popover-top .arrow,
+.popover.popover-content.bs-popover-bottom .arrow {
+  left: 40%;
+}
+
+.popover.popover-content.bs-popover-bottom .arrow::before,
+.popover.popover-content.bs-popover-bottom-right .arrow::before,
+.popover.popover-content.bs-popover-bottom-left .arrow::before {
+  border-bottom-color: #ebebeb;
+}
+
+.popover.popover-content.bs-popover-bottom .arrow::after,
+.popover.popover-content.bs-popover-bottom-right .arrow::after,
+.popover.popover-content.bs-popover-bottom-left .arrow::after {
+  border-bottom-color: #ebebeb;
+}
+
+collapsible-list {
+  box-shadow: unset !important;
+  margin: 0px auto !important;
+  border: unset !important;
+  padding: 0px 40px;
+}
+
+collapsible-list-item {
+  border-bottom: 2px solid #000000 !important;
+  display: block !important;
+}
+
+collapsible-header {
+  background-color: unset !important;
+  border: unset !important;
+  padding: 0 !important;
+  font-weight: bold !important;
+  font-size: 16px !important;
+
+  i {
+    margin-right: 10px;
+  }
+}
+
+collapsible-body {
+  // box-shadow: rgb(208, 208, 208) 0px 0px 4px -2px inset,
+  //   rgb(208, 208, 208) 0px 0px 2px -1px inset !important;
+  box-shadow: unset !important;
+  padding: 0 !important;
+}
+
+/************* Remove carosel overrelay events ************/
+.carousel-control-prev,
+.carousel-control-next {
+  pointer-events: none;
+}
+
+#toast-container > div {
+  opacity: 1;
+}
+
+.toast {
+  max-width: 500px !important;
+  top: 15px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.toast-container.toast-top-center .toast,
+.toast-container.toast-bottom-center .toast {
+  width: 100% !important;
+}
+
+.toast-error {
+  background-color: #c70000 !important;
+}
+
+.toast-warning {
+  background-color: #2f3dbe !important;
+}
+
+.toast-success {
+  background-color: #239a10 !important;
+}
+.summary-checkout {
+  .cart-block {
+    margin: 0 !important;
+    padding: 0 !important;
+    .summary {
+      margin: 0 !important;
+    }
+  }
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .banner .carousel-inner {
+    height: auto;
+  }
+
+  .banner .carousel .carousel-indicators li {
+    width: 20px;
+    height: 2px;
+  }
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 767px) {
+  .banner .carousel-inner {
+    height: auto;
+  }
+
+  .banner .carousel .carousel-indicators li {
+    width: 25px;
+    height: 4px;
+  }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .banner .carousel-inner {
+    height: auto;
+  }
+
+  .banner .carousel .carousel-indicators li {
+    width: 25px;
+    height: 4px;
+  }
+}

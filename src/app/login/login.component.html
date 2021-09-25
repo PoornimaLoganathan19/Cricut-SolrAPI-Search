@@ -1,0 +1,87 @@
+<div class="account">
+  <img src="../assets/cricut/media/banners/4.jpg" height="550px" />
+  <div class="row account-box">
+    <div class="col-sm-4 account-cont">
+      <h2>Login</h2>
+
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <label for="userName">User Name/ E-mail</label>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control is-invalid"
+            formControlName="userName"
+            placeholder="Enter Username or E-mail"
+            [ngClass]="{
+              'is-invalid': submitted && getFormValue.userName.errors
+            }"
+          />
+          <div
+            *ngIf="submitted && getFormValue.userName.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="getFormValue.userName.errors.required">
+              Please provide a User Name or E-mail.
+            </div>
+          </div>
+        </div>
+        <label for="password">Password</label>
+        <div class="input-group mb-3">
+          <input
+            type="password"
+            class="form-control"
+            formControlName="password"
+            placeholder="Enter Password"
+            [ngClass]="{
+              'is-invalid': submitted && getFormValue.password.errors
+            }"
+          />
+          <div
+            *ngIf="submitted && getFormValue.password.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="getFormValue.password.errors.required">
+              Please provide a Password.
+            </div>
+          </div>
+          <div class="input-group-append">
+            <span class="input-group-text "
+              ><img src="../assets/images/pass-icon.png" alt=""
+            /></span>
+          </div>
+        </div>
+
+        <!-- <div class="custom-control custom-checkbox">
+          <input
+            type="checkbox"
+            class="custom-control-input"
+            id="defaultChecked2"
+            checked
+          />
+          <label class="custom-control-label" for="defaultChecked2"
+            >Remember my ID</label
+          >
+        </div> -->
+
+        <button type="submit" class="btn btn-account">
+          LOGIN
+        </button>
+        <a>Forgot Password?</a>
+
+        <hr />
+        <a class="plain disable">Login with Social account</a>
+        <button type="button" class="btn btn-outline-login ">
+          <img src="../assets/images/facebook.png" alt="" />
+        </button>
+        <button type="button" class="btn btn-outline-login right">
+          <img src="../assets/images/google.png" alt="" />
+        </button>
+        <a [routerLink]="['/register']" class="plain"
+          >Don’t have an account?
+          <b style="text-decoration: underline">Register</b></a
+        >
+      </form>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

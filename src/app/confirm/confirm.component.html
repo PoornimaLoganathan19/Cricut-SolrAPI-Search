@@ -1,0 +1,43 @@
+<div class="title">
+  <h1>Confirmation</h1>
+</div>
+<div class="checkmark-circle">
+  <div class="background"></div>
+  <div class="checkmark draw"></div>
+</div>
+<div class="confirm" *ngIf="orderResponse">
+  <h1>Your order has been confirmed</h1>
+  <h4>Your order id: {{ orderResponse.data.id }}</h4>
+  <h4>
+    Order amount:
+    {{
+      orderResponse.data.totalPriceWithTax | currency: currency:"symbol":"1.0"
+    }}
+  </h4>
+  <h4>
+    <a [routerLink]="['/orders', orderResponse.data.id]">Click here</a> to view
+    order details
+  </h4>
+  <button
+    type="button"
+    [routerLink]="['/']"
+    color="fill-btn"
+    mdbBtn
+    mdbWavesEffect
+  >
+    Go to Home
+  </button>
+  <button
+    type="button"
+    color="model"
+    mdbBtn
+    mdbWavesEffect
+    (click)="showAllProducts()"
+  >
+    View all products
+  </button>
+</div>
+
+<div class="confit" id="confit">
+  <canvas id="custom-canvas" class="custom-canvas"></canvas>
+</div>

@@ -1,0 +1,8 @@
+.content-body {
+  margin-top: 80px;
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .content-body {
+    margin-top: 70px;
+  }
+}

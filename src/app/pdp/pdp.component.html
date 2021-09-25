@@ -1,0 +1,119 @@
+<div class="bundle-detail row" *ngIf="specsResponse && productResponse">
+  <div class="col-sm-12 gray-space"></div>
+  <div class="col-sm-8 bundle-contents">
+    <h3 class="title">{{ productResponse.data.category.displayName }}</h3>
+    <h2>{{ productResponse.data.displayName }}</h2>
+    <div>
+      <p class="space">
+        {{ productResponse.data.longDescription }}
+      </p>
+      <form [formGroup]="addToCartForm" (ngSubmit)="addToCart()">
+        <div class="row">
+          <div class="col-sm-6 attribute">
+            <div class="qty-box">
+              <h4>
+                Quantity :
+              </h4>
+              <a
+                class="waves-effect select-btn btn-large"
+                (click)="minusQuantity()"
+                >-</a
+              >
+              <input
+                class="qty-field is-invalid"
+                type="number"
+                formControlName="quantity"
+                [ngClass]="{
+                  'is-invalid': submitted && getFormValue.quantity.errors
+                }"
+                value="{{ addToCartForm.value.quantity }}"
+              />
+              <a
+                class="waves-effect select-btn btn-large"
+                (click)="addQuantity()"
+                >+</a
+              >
+            </div>
+          </div>
+
+          <div class="col-sm-6 attribute">
+            <button type="submit" class="waves-effect select-btn btn-large">
+              Add To Cart
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 attribute">
+            <div
+              *ngIf="submitted && getFormValue.quantity.errors"
+              class="error-qty"
+            >
+              <div *ngIf="getFormValue.quantity.errors.required">
+                Please enter the quantity.
+              </div>
+              <div
+                *ngIf="
+                  getFormValue.quantity.errors.min ||
+                  getFormValue.quantity.errors.max
+                "
+              >
+                The quantity should be within the range (1 - 100).
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 attribute">
+            <h4>
+              Price per unit :<span>{{
+                productResponse.data.price.priceValue
+                  | currency: currency:"symbol":"1.0"
+              }}</span>
+            </h4>
+          </div>
+          <div class="col-sm-6 attribute">
+            <h4>
+              Total Price :<span>{{
+                productResponse.data.price.priceValue *
+                  addToCartForm.controls.quantity.value
+                  | currency: currency:"symbol":"1.0"
+              }}</span>
+            </h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 attribute">
+            <table class="spec">
+              <thead class="heading">
+                <tr>
+                  <th><b>Specifications</b></th>
+                  <th>{{ specsResponse.displayName }}</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr *ngFor="let group of specsResponse.data.specifications">
+                  <td class="att-side">{{ group.specGroup }}</td>
+                  <td>
+                    <ul *ngFor="let spec of group.specs">
+                      <li>{{ spec.value }}</li>
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-sm-4 bundle-card">
+    <div class="device-image">
+      <ngx-gallery
+        [options]="galleryOptions"
+        [images]="galleryImages"
+      ></ngx-gallery>
+    </div>
+  </div>
+  <div class="col-sm-12 gray-space"></div>
+</div>

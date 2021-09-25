@@ -1,0 +1,195 @@
+<div class="account">
+  <img src="../assets/cricut/media/banners/4.jpg" height="500px" />
+  <div class="row account-box">
+    <div class="col-sm-4 account-cont">
+      <h2>Create an account</h2>
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <label for="firstName">First Name*</label>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="firstName"
+            placeholder="Enter First Name"
+            [ngClass]="{
+              'is-invalid': submitted && getFormValue.firstName.errors
+            }"
+          />
+          <div
+            *ngIf="submitted && getFormValue.firstName.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="getFormValue.firstName.errors.required">
+              First Name is Required
+            </div>
+            <div *ngIf="getFormValue.firstName.errors.pattern">
+              First Name is not valid
+            </div>
+          </div>
+        </div>
+        <label for="lastName">Last Name*</label>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="lastName"
+            placeholder="Enter Last Name"
+            [ngClass]="{
+              'is-invalid': submitted && getFormValue.lastName.errors
+            }"
+          />
+          <div
+            *ngIf="submitted && getFormValue.lastName.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="getFormValue.lastName.errors.required">
+              Last Name is Required
+            </div>
+            <div *ngIf="getFormValue.lastName.errors.pattern">
+              Last Name is not valid
+            </div>
+          </div>
+        </div>
+
+        <label for="userId">E-mail(User Id)*</label>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="johan.eve@mail.com"
+            formControlName="userId"
+            [ngClass]="{
+              'is-invalid': submitted && getFormValue.userId.errors
+            }"
+          />
+          <div
+            *ngIf="submitted && getFormValue.userId.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="getFormValue.userId.errors.required">
+              Email Id is required
+            </div>
+            <div *ngIf="getFormValue.userId.errors.pattern">
+              Email Id is invalid
+            </div>
+          </div>
+        </div>
+        <label for="phone">Phone Number*</label>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="1234567890"
+            formControlName="phone"
+            [ngClass]="{
+              'is-invalid': submitted && getFormValue.phone.errors
+            }"
+          />
+          <div
+            *ngIf="submitted && getFormValue.phone.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="getFormValue.phone.errors.required">
+              Phone Number is required
+            </div>
+            <div *ngIf="getFormValue.phone.errors.pattern">
+              Phone Number is invalid
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <label for="password">Password*</label>
+            <div class="input-group mb-3">
+              <input
+                type="password"
+                class="form-control"
+                placeholder="******"
+                formControlName="password"
+                [ngClass]="{
+                  'is-invalid': submitted && getFormValue.password.errors
+                }"
+              />
+              <div
+                *ngIf="submitted && getFormValue.password.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="getFormValue.password.errors.required">
+                  Password is Required
+                </div>
+                <div *ngIf="getFormValue.password.errors.minlength">
+                  Password should have at least 6 characters
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <label for="confirmPassword">Confirm Password*</label>
+            <div class="input-group mb-3">
+              <input
+                type="password"
+                class="form-control"
+                placeholder="******"
+                formControlName="confirmPassword"
+                [ngClass]="{
+                  'is-invalid': submitted && getFormValue.confirmPassword.errors
+                }"
+              />
+              <div
+                *ngIf="submitted && getFormValue.confirmPassword.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="getFormValue.confirmPassword.errors.required">
+                  Password is Required
+                </div>
+                <div *ngIf="getFormValue.confirmPassword.errors.minlength">
+                  Password should have at least 6 characters
+                </div>
+                <div *ngIf="getFormValue.confirmPassword.errors.mustMatch">
+                  Passwords must match
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input
+            type="checkbox"
+            class="custom-control-input"
+            id="termsAndConditions"
+            formControlName="termsAndConditions"
+            [ngClass]="{
+              'is-invalid': submitted && getFormValue.termsAndConditions.errors
+            }"
+          />
+          <label class="custom-control-label" for="termsAndConditions">
+            I have read and accept the Terms and Conditions
+          </label>
+          <div
+            *ngIf="submitted && getFormValue.termsAndConditions.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="getFormValue.termsAndConditions.errors.required">
+              Terms and Conditions is required
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-account">
+          Register
+        </button>
+
+        <hr />
+        <a class="disable">Have an account?</a>
+        <button
+          [routerLink]="['/login']"
+          type="button"
+          class="btn btn-outline-account "
+        >
+          Login
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

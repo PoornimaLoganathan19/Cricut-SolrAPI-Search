@@ -1,0 +1,336 @@
+<div class="title">
+  <a class="back" [routerLink]="['/cart']">
+    <img src="../assets/images/arrow-left.png" /> Back
+  </a>
+  <h1>checkout</h1>
+</div>
+
+<div class="stepper-head row justify-content-center">
+  <div class="col-sm-4">
+    <ul class="stepper stepper-horizontal step-details">
+      <li class="step active completed">
+        <a> <span class="circle">1</span> </a>
+        <span class="label first">Shipping</span>
+      </li>
+      <li class="step">
+        <a> <span class="circle">2</span></a>
+        <span class="label center">Payment</span>
+      </li>
+      <li class="step">
+        <a> <span class="circle">3</span></a>
+        <span class="label last">Review & Confirm</span>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="model-step" *ngIf="addressListResponse">
+  <div class="row adderss-block justify-content-center">
+    <div class="col-sm-8 summary-checkout">
+      <app-cart></app-cart>
+    </div>
+    <div class="col-sm-4 address ">
+      <div class="payment ">
+        <h3>Enter Billing address</h3>
+
+        <div
+          class="address-item"
+          *ngFor="let address of addressListResponse.data"
+        >
+          <div class="custom-control custom-radio">
+            <input
+              type="radio"
+              class="custom-control-input"
+              [(ngModel)]="addressId"
+              id="{{ address.id }}"
+              value="{{ address.id }}"
+            />
+            <label
+              class="custom-control-label address-title"
+              for="{{ address.id }}"
+            >
+              {{ address.firstName }} {{ address.lastName }}
+            </label>
+            <div class="address-list">
+              <p>{{ address.line1 }},{{ address.line2 }},</p>
+              <p>
+                {{ address.town }}, {{ address.state.name }} -
+                {{ address.postalCode }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="action-item">
+          <button
+            type="submit"
+            outline="true"
+            mdbBtn
+            mdbWavesEffect
+            class="btn-outline"
+            (click)="addAddressModal.show()"
+          >
+            Add
+          </button>
+          <button
+            (click)="checkoutAddress()"
+            type="submit"
+            outline="true"
+            mdbBtn
+            mdbWavesEffect
+            [disabled]="!addressId"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+      <!-- <div class="over-payment"></div> -->
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  mdbModal
+  #addAddressModal="mdbModal"
+  tabindex="-1"
+  role="dialog"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="addressForm-content">
+          <form [formGroup]="shippingAddressForm" (ngSubmit)="addAddress()">
+            <div class="method">
+              <div class="address-form">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <label for="firstName">First name</label>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="first name"
+                        formControlName="firstName"
+                        [ngClass]="{
+                          'is-invalid':
+                            submitted && getAddressFormValue.firstName.errors
+                        }"
+                      />
+                      <div
+                        *ngIf="
+                          submitted && getAddressFormValue.firstName.errors
+                        "
+                        class="invalid-feedback"
+                      >
+                        <div
+                          *ngIf="getAddressFormValue.firstName.errors.required"
+                        >
+                          Please provide the first name
+                        </div>
+                        <div
+                          *ngIf="getAddressFormValue.firstName.errors.pattern"
+                        >
+                          First name is invalid
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <label for="lastName">Last name</label>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="last name"
+                        formControlName="lastName"
+                        [ngClass]="{
+                          'is-invalid':
+                            submitted && getAddressFormValue.lastName.errors
+                        }"
+                      />
+                      <div
+                        *ngIf="submitted && getAddressFormValue.lastName.errors"
+                        class="invalid-feedback"
+                      >
+                        <div
+                          *ngIf="getAddressFormValue.lastName.errors.required"
+                        >
+                          Please provide the last name
+                        </div>
+                        <div
+                          *ngIf="getAddressFormValue.lastName.errors.pattern"
+                        >
+                          Last name is invalid
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <label for="line1">Line 1</label>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="address line 1"
+                        formControlName="line1"
+                        [ngClass]="{
+                          'is-invalid':
+                            submitted && getAddressFormValue.line1.errors
+                        }"
+                      />
+                      <div
+                        *ngIf="submitted && getAddressFormValue.line1.errors"
+                        class="invalid-feedback"
+                      >
+                        <div *ngIf="getAddressFormValue.line1.errors.required">
+                          Please provide address line 1
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <label for="line2">Line 2</label>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="address line 2"
+                        formControlName="line2"
+                        [ngClass]="{
+                          'is-invalid':
+                            submitted && getAddressFormValue.line2.errors
+                        }"
+                      />
+                      <div
+                        *ngIf="submitted && getAddressFormValue.line2.errors"
+                        class="invalid-feedback"
+                      >
+                        <div *ngIf="getAddressFormValue.line2.errors.required">
+                          Please provide address line 2
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <label for="country">Country</label>
+                    <select
+                      class="browser-default custom-select"
+                      formControlName="country"
+                      [ngClass]="{
+                        'is-invalid':
+                          submitted && getAddressFormValue.country.errors
+                      }"
+                    >
+                      <option value="">Country</option>
+                      <option value="USA">USA</option>
+                    </select>
+                    <div
+                      *ngIf="submitted && getAddressFormValue.country.errors"
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="getAddressFormValue.country.errors.required">
+                        Country is Required
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <label for="state">State</label>
+                    <select
+                      class="browser-default custom-select"
+                      formControlName="state"
+                      [ngClass]="{
+                        'is-invalid':
+                          submitted && getAddressFormValue.state.errors
+                      }"
+                    >
+                      <option value="">State</option>
+                      <option value="NY">New York</option>
+                      <option value="VA">Virginia</option>
+                    </select>
+                    <div
+                      *ngIf="submitted && getAddressFormValue.state.errors"
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="getAddressFormValue.state.errors.required">
+                        State is Required
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <label for="postalCode">City</label>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="city"
+                        formControlName="town"
+                        [ngClass]="{
+                          'is-invalid':
+                            submitted && getAddressFormValue.town.errors
+                        }"
+                      />
+                      <div
+                        *ngIf="submitted && getAddressFormValue.town.errors"
+                        class="invalid-feedback"
+                      >
+                        <div *ngIf="getAddressFormValue.town.errors.required">
+                          Please provide the city
+                        </div>
+                        <div *ngIf="getAddressFormValue.town.errors.pattern">
+                          Invalid city name
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <label for="postalCode">Zipcode</label>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="12345"
+                        formControlName="postalCode"
+                        [ngClass]="{
+                          'is-invalid':
+                            submitted && getAddressFormValue.postalCode.errors
+                        }"
+                      />
+                      <div
+                        *ngIf="
+                          submitted && getAddressFormValue.postalCode.errors
+                        "
+                        class="invalid-feedback"
+                      >
+                        <div
+                          *ngIf="getAddressFormValue.postalCode.errors.required"
+                        >
+                          Please provide the zip code
+                        </div>
+                        <div
+                          *ngIf="getAddressFormValue.postalCode.errors.pattern"
+                        >
+                          Invalid zip code
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button
+                type="submit"
+                outline="true"
+                class="saveAddress"
+                mdbBtn
+                mdbWavesEffect
+              >
+                Save address
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

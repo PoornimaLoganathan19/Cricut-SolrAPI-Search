@@ -1,0 +1,153 @@
+<app-carousel></app-carousel>
+<div class="row category justify-content-center">
+  <div class="col-md-4 col-lg-2 nav-item">
+    <div class="cat-list">
+      <a class="nav-link">Experience</a>
+    </div>
+  </div>
+  <div class="col-md-4  col-lg-2 nav-item">
+    <div class="cat-list">
+      <a class="nav-link" (click)="showCategoriesPopup()">Products</a>
+    </div>
+  </div>
+  <div class="col-md-4 col-lg-2 nav-item">
+    <div class="cat-list">
+      <a class="nav-link">Projects</a>
+    </div>
+  </div>
+</div>
+<div class="top-list">
+  <h2>Explore our range of products</h2>
+  <app-product-list></app-product-list>
+</div>
+
+<div class="series-left">
+  <div class="back-image">
+    <img src="../assets/cricut/media/banners/1.jpg" />
+    <div class="blank"></div>
+  </div>
+
+  <div class="series-cont">
+    <h4>Cricut Maker</h4>
+    <p>
+      It handles fabrics, leather, paper, and balsa wood with effortless
+      precision. Cuts sewing patterns in just a few clicks. And places more
+      creative possibilities than ever at your fingertips. Meet Cricut Maker –
+      the ultimate smart cutting machine.
+    </p>
+    <button
+      (click)="goToCategory('cricut_maker')"
+      type="button"
+      mdbBtn
+      class="series-btn"
+      mdbWavesEffect
+    >
+      View Cricut Maker
+    </button>
+  </div>
+  <!-- <img class="pop-img" src="../assets/images/x-series-car.png" /> -->
+</div>
+
+<div class="series-center">
+  <div class="back-image">
+    <img src="../assets/cricut/media/banners/2.jpg" height="500px" />
+    <div class="m-series">
+      <h6>Cricut</h6>
+      <h4>EasyPress</h4>
+    </div>
+    <div class="overrelay">
+      <div class="white-overelay">
+        <h3>Cricut EasyPress. It’s like magic.</h3>
+      </div>
+      <div class="series-cont">
+        <button
+          (click)="goToCategory('cricut_easypress')"
+          type="button"
+          mdbBtn
+          class="series-center-btn"
+          mdbWavesEffect
+        >
+          Know More
+        </button>
+      </div>
+      <div class="black-overelay"></div>
+    </div>
+  </div>
+</div>
+
+<div class="features">
+  <h4>
+    “We are born makers. We move what we’re learning from our heads to our
+    hearts through our hands.”
+  </h4>
+  <h6>Dr. Brene Brown</h6>
+  <div class="feature-list">
+    <div class="row">
+      <div class="col-sm">
+        <div class="feature-item">
+          <img src="../assets/cricut/media/features/1.jpg" width="350px" />
+          <h4>All-new Infusible Ink™.</h4>
+          <p>
+            At last, pro-level heat transfers that last a lifetime.
+          </p>
+          <a>FIND OUT MORE <img src="../assets/images/arrow-blue.png" /> </a>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="feature-item">
+          <img src="../assets/cricut/media/features/2.jpg" width="350px" />
+          <h4>
+            Meet Cricut EasyPress Mini™.
+          </h4>
+          <p>
+            Customize unusual objects & projects, from hats to shoes.
+          </p>
+          <a>FIND OUT MORE <img src="../assets/images/arrow-blue.png"/></a>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="feature-item">
+          <img src="../assets/cricut/media/features/3.jpg" width="350px" />
+          <h4>Cricut + Martha Stewart.</h4>
+          <p>
+            Now this is a power couple.
+          </p>
+          <a>FIND OUT MORE <img src="../assets/images/arrow-blue.png"/></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="series-left">
+  <div class="back-image">
+    <img src="../assets/cricut/media/banners/3.jpg" height="450px" />
+  </div>
+
+  <div class="series-cont">
+    <h4>The Cricut Products</h4>
+    <p>
+      Ever since we launched the original Cricut® cutting machine, you’ve
+      inspired us with your amazing creations. And as long as you keep doing
+      your thing, we’ll keep doing ours: designing and building the tools you
+      need to live your most creative life.
+    </p>
+    <button
+      (click)="showCategoriesPopup()"
+      type="button"
+      mdbBtn
+      class="series-btn"
+      mdbWavesEffect
+    >
+      All Products
+    </button>
+  </div>
+</div>
+<!-- <div class="map">
+  <img src="../assets/images/map.png" />
+  <div class="image-over"></div>
+  <div class="form-row map-search">
+    <h2>Find Your Dealer</h2>
+    <app-dealer></app-dealer>
+  </div>
+</div> -->
+<app-footer></app-footer>

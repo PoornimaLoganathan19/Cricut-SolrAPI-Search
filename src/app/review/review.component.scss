@@ -1,0 +1,177 @@
+.title {
+  .back {
+    color: #189dd4;
+    font-size: 14px;
+    position: absolute;
+    top: 95px;
+    left: 45px;
+  }
+  h1 {
+    text-align: center;
+    font-size: 24px;
+    color: #000000;
+    padding: 15px 0px;
+    margin: 0;
+  }
+}
+.stepper-head {
+  margin: 0;
+  ul.stepper {
+    padding: 20px 60px;
+    padding-top: 0;
+    margin: 0;
+  }
+
+  .step-details {
+    .step {
+      .circle {
+        font-size: 16px;
+        line-height: 35px;
+        font-weight: 600;
+        margin-right: 0;
+        width: 35px;
+        height: 35px;
+      }
+      a {
+        padding: 0;
+        text-align: center;
+      }
+      .label {
+        position: absolute;
+        top: 45px;
+        font-size: 12px;
+        line-height: 15px;
+      }
+      .first {
+        left: -7px;
+      }
+      .center {
+        left: 18%;
+      }
+      .last {
+        right: -25px;
+      }
+    }
+    .active {
+      .circle {
+        background-color: #189dd4 !important;
+        border: double;
+        width: 40px;
+        height: 40px;
+      }
+    }
+    .completed {
+      .circle {
+        background-color: #189dd4 !important;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+      }
+    }
+    .step::after,
+    .step::before {
+      margin: 0px;
+    }
+    .active::after,
+    .active::before,
+    .completed::before,
+    .completed::after {
+      height: 2px;
+      background-color: #189dd4 !important;
+    }
+  }
+}
+.review {
+  margin: 20px 0px;
+  p {
+    font-size: 14px;
+    text-align: center;
+    margin: 0;
+    margin-bottom: 15px;
+  }
+  .data-block {
+    margin: 10px 30px;
+    .small-box {
+      padding-bottom: 20px;
+      .box-data {
+        margin: 0px;
+        background: #ffffff;
+        padding: 25px;
+        height: 190px;
+        .title {
+          padding: 0px;
+          margin-bottom: 30px;
+          h3 {
+            text-transform: uppercase;
+            font-size: 16px;
+            font-weight: bold;
+          }
+        }
+        .know-more {
+          padding: 0px;
+          text-align: right;
+          a {
+            text-transform: uppercase;
+            color: #189dd4;
+            font-size: 12px;
+          }
+        }
+        .detail {
+          padding: 0;
+          img {
+            width: 100px;
+            height: 50px;
+            float: left;
+          }
+          h4 {
+            font-size: 16px;
+            line-height: 24px;
+            margin: 0;
+          }
+          p {
+            color: #8d8d8d;
+            font-size: 12px;
+            line-height: 15px;
+            padding: 0;
+            margin-bottom: 0;
+            text-align: left;
+          }
+        }
+        .price {
+          padding: 0;
+          p {
+            font-size: 16px;
+            padding: 0;
+            margin: 0;
+            text-align: right;
+          }
+          .book {
+            color: #189dd4;
+            font-weight: bold;
+          }
+          .place-order {
+            margin: 0;
+            background: #189dd4;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: bold;
+            float: right;
+            height: 40px;
+            margin-top: 30px;
+            padding: 10px 20px;
+          }
+        }
+      }
+    }
+  }
+  .place-order-eod {
+    display: block;
+    margin: 0 auto;
+    background: #189dd4;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    height: 40px;
+    padding: 10px 20px;
+  }
+}

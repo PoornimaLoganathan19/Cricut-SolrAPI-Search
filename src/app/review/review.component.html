@@ -1,0 +1,95 @@
+<div class="title">
+  <a class="back" [routerLink]="['/cart']">
+    <img src="../assets/images/arrow-left.png" /> Back
+  </a>
+  <h1>Checkout</h1>
+</div>
+
+<div class="stepper-head row justify-content-center">
+  <div class="col-sm-4">
+    <ul class="stepper stepper-horizontal step-details">
+      <li class="step completed" (click)="changeAddress()">
+        <a> <span class="circle">1</span> </a>
+        <span class="label first">Shipping/Billing</span>
+      </li>
+      <li class="step completed" (click)="changePayment()">
+        <a> <span class="circle">2</span></a>
+        <span class="label center">Payment</span>
+      </li>
+      <li class="step active completed">
+        <a> <span class="circle">3</span></a>
+        <span class="label last">Review & Confirm</span>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="review" *ngIf="cartResponse">
+  <div class="row data-block">
+    <div class="col-sm-8 summary-checkout">
+      <app-cart></app-cart>
+    </div>
+    <div class="col-sm-4">
+      <div class="small-box">
+        <div class="row box-data">
+          <div class="col-sm-6 title">
+            <h3>Billing address</h3>
+          </div>
+          <div class="col-sm-6 know-more">
+            <a (click)="changeAddress()">
+              Change address <img src="../assets/images/arrow-right.png" />
+            </a>
+          </div>
+          <div class="col-sm-7 detail">
+            <h4>
+              {{ cartResponse.data.shippingAddress.firstName }}
+              {{ cartResponse.data.shippingAddress.lastName }}
+            </h4>
+            <p>{{ cartResponse.data.shippingAddress.line1 }}</p>
+            <p>{{ cartResponse.data.shippingAddress.line2 }},</p>
+            <p>
+              {{ cartResponse.data.shippingAddress.town }} -
+              {{ cartResponse.data.shippingAddress.postalCode }}
+            </p>
+            <p>{{ cartResponse.data.shippingAddress.state.name }},</p>
+            <p>{{ cartResponse.data.shippingAddress.country.name }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="small-box">
+        <div class="row box-data">
+          <div class="col-sm-6 title">
+            <h3>Payment Method</h3>
+          </div>
+          <div class="col-sm-6 know-more">
+            <a (click)="changePayment()">
+              Change payment <img src="../assets/images/arrow-right.png" />
+            </a>
+          </div>
+          <div
+            class="col-sm-7 detail"
+            *ngFor="let payment of cartResponse.data.paymentInfos"
+          >
+            <h4>Credit/Debit card</h4>
+            <p>
+              {{ payment.creditCard.firstName }}
+              {{ payment.creditCard.lastName }}
+            </p>
+            <p>{{ payment.creditCard.cardNumber }}</p>
+            <p>
+              Amount: {{ payment.amount | currency: currency:"symbol":"1.0" }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button
+    type="button"
+    class="place-order-eod"
+    mdbBtn
+    mdbWavesEffect
+    (click)="placeOrder()"
+  >
+    Place order
+  </button>
+</div>

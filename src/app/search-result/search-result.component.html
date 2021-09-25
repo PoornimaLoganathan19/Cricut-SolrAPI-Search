@@ -1,0 +1,318 @@
+<div class="row detail-cont">
+  <div class="col-sm-10 product-detail">
+    <div class="search">
+      <div class="search-block">
+        <img
+          class="icon"
+          src="../assets/images/search.png"
+          (click)="search(searchKey)"
+        />
+        <input
+          class="form-control search-tag"
+          type="text"
+          placeholder="Search Cricut by"
+          [(ngModel)]="searchQueryOptions.searchText"
+          (keydown.enter)="searchWithFacets()"
+        />
+
+        <img
+          class="close"
+          src="../assets/images/close-lg.png"
+          [routerLink]="['/search']"
+        />
+      </div>
+      <div class="search-result" *ngIf="searchResponse">
+        <div class="top-page">
+          <p *ngIf="searchResponse.response.docs.length > 0">
+            Showing: <b>{{ startNumber }} - {{ endNumber }} </b> of
+            <b>{{ searchResponse.response.numFound }}</b> results
+          </p>
+          <div *ngIf="searchResponse.response.docs.length == 0">
+            <p>No models found. Try some other keyword or filter!!</p>
+          </div>
+          <!-- <div class="per-page">
+            <p>Show per page</p>
+            <select
+              class="browser-default custom-select"
+              (change)="onRowsSelected($event)"
+            >
+              <option value="10" selected>10</option>
+              <option value="8">8</option>
+            </select>
+          </div> -->
+        </div>
+
+        <div class="result">
+          <div class="row">
+            <div
+              class="col-sm-6"
+              *ngFor="let product of searchResponse.response.docs"
+            >
+              <div class="row product-item">
+                <div class="col-sm-6 product-img">
+                  <img
+                    (click)="goToProduct(product.productId)"
+                    src="{{ product.url }}"
+                  />
+                </div>
+                <div class="col-sm-6 product-detail">
+                  <h1>{{ product.categoryName }} {{ product.displayName }}</h1>
+                  <p>{{ product.shortDescription }}</p>
+                  <div class="price">
+                    Starts from MSRP
+                    <div class="currency">
+                      {{
+                        product.priceValue | currency: currency:"symbol":"1.0"
+                      }}
+                    </div>
+                  </div>
+                  <a (click)="goToProduct(product.productId)"
+                    >KNOW MORE <img src="../assets/images/arrow-blue.png"
+                  /></a>
+                  <a class="right" (click)="addToCart(product.productId)">
+                    ADD TO CART
+                    <img src="../assets/images/arrow-blue.png" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="list-item">
+        <a href=""
+          >1. Lorem ipsum dolor sit amet, consectetur adipiscing elit</a
+        >
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae
+          facilisis felis. Suspendisse potenti. Vestibulum ante ipsum primis in
+          faucibus orci luctus et ultrices posuere cubilia Curae.
+        </p>
+      </div>
+      <div class="list-item">
+        <a href="">2. Lorem ipsum dolor sit amet, consectetur</a>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae
+          facilisis felis. Suspendisse potenti. Vestibulum ante ipsum primis in
+          faucibus orci luctus et ultrices posuere cubilia Curae.
+        </p>
+      </div>
+      <div class="list-item">
+        <a href=""
+          >3. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+          vel facilisis erat, sed scelerisque diam Phasellus placerat tellus
+          nibh, a vehicula mi blandit sit amet.</a
+        >
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae
+          facilisis felis. Suspendisse potenti. Vestibulum ante ipsum primis in
+          faucibus orci luctus et ultrices posuere cubilia Curae.
+        </p>
+      </div>
+      <div class="list-item">
+        <a href="">4. Lorem ipsum dolor sit amet, consectetur</a>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae
+          facilisis felis. Suspendisse potenti. Vestibulum ante ipsum primis in
+          faucibus orci luctus et ultrices posuere cubilia Curae.
+        </p>
+      </div>
+      <div class="list-item">
+        <a href="">5. Lorem ipsum dolor sit amet, consectetur</a>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae
+          facilisis felis. Suspendisse potenti. Vestibulum ante ipsum primis in
+          faucibus orci luctus et ultrices posuere cubilia Curae.
+        </p>
+      </div>
+      <div class="list-item">
+        <a href="">6. Lorem ipsum dolor sit amet, consectetur</a>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae
+          facilisis felis. Suspendisse potenti. Vestibulum ante ipsum primis in
+          faucibus orci luctus et ultrices posuere cubilia Curae.
+        </p>
+      </div>
+      <div class="list-item">
+        <a href="">7. Lorem ipsum dolor sit amet, consectetur</a>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae
+          facilisis felis. Suspendisse potenti. Vestibulum ante ipsum primis in
+          faucibus orci luctus et ultrices posuere cubilia Curae.
+        </p>
+      </div>
+      <div class="list-item">
+        <a href="">8. Lorem ipsum dolor sit amet, consectetur</a>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae
+          facilisis felis. Suspendisse potenti. Vestibulum ante ipsum primis in
+          faucibus orci luctus et ultrices posuere cubilia Curae.
+        </p>
+      </div>
+      <div class="list-item">
+        <a href="">9. Lorem ipsum dolor sit amet, consectetur</a>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae
+          facilisis felis. Suspendisse potenti. Vestibulum ante ipsum primis in
+          faucibus orci luctus et ultrices posuere cubilia Curae.
+        </p>
+      </div>
+      <div class="list-item">
+        <a href="">10. Lorem ipsum dolor sit amet, consectetur</a>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae
+          facilisis felis. Suspendisse potenti. Vestibulum ante ipsum primis in
+          faucibus orci luctus et ultrices posuere cubilia Curae.
+        </p>
+      </div> -->
+
+          <nav aria-label="Page navigation example" *ngIf="pages.length > 0">
+            <ul class="pagination pg-blue">
+              <li class="page-item">
+                <a
+                  class="page-link"
+                  aria-label="Previous"
+                  (click)="onPageChange(currentPage - 1)"
+                >
+                  <span aria-hidden="true">&#10216;</span>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item" *ngFor="let page of pages">
+                <a class="page-link active" *ngIf="page == currentPage">{{
+                  page
+                }}</a>
+                <a
+                  class="page-link"
+                  *ngIf="page != currentPage"
+                  (click)="onPageChange(page)"
+                  >{{ page }}</a
+                >
+              </li>
+              <li class="page-item">
+                <a
+                  class="page-link"
+                  aria-label="Next"
+                  (click)="onPageChange(currentPage + 1)"
+                >
+                  <span aria-hidden="true">&#10217;</span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-2 filter">
+    <h2 class="filter-head">Filter By <span (click)="reset()">Reset</span></h2>
+    <div
+      class="filter-title waves-light"
+      (click)="color.toggle()"
+      mdbWavesEffect
+    >
+      Color
+    </div>
+    <div mdbCollapse [isCollapsed]="true" #color="bs-collapse">
+      <div class="button-group-pills" data-toggle="buttons">
+        <span *ngFor="let color of colors">
+          <label
+            class="btn active"
+            *ngIf="color.isSelected"
+            (click)="onColorSelected(color.name)"
+          >
+            <!-- <input type="checkbox" name="options" /> -->
+            <div>{{ color.name }}</div>
+          </label>
+          <label
+            class="btn"
+            *ngIf="!color.isSelected"
+            (click)="onColorSelected(color.name)"
+          >
+            <!-- <input type="checkbox" name="options" /> -->
+            <div>{{ color.name }}</div>
+          </label>
+        </span>
+      </div>
+    </div>
+    <div
+      class="filter-title waves-light"
+      (click)="price.toggle()"
+      mdbWavesEffect
+    >
+      Price
+    </div>
+    <div mdbCollapse [isCollapsed]="true" #price="bs-collapse">
+      <div class="range-slider">
+        <!-- <ng5-slider [(value)]="value" [options]="options"></ng5-slider> -->
+
+        <ng5-slider
+          [(value)]="searchQueryOptions.minPrice"
+          [(highValue)]="searchQueryOptions.maxPrice"
+          [options]="priceOptions"
+          (userChangeEnd)="onPriceChange()"
+        ></ng5-slider>
+
+        <!-- <form [formGroup]="sliderForm">
+          <ng5-slider
+            [options]="priceOption"
+            formControlName="sliderControl"
+          ></ng5-slider>
+        </form> -->
+      </div>
+    </div>
+
+    <!-- <div
+      class="filter-title waves-light"
+      (click)="seze.toggle()"
+      mdbWavesEffect
+    >
+      Size
+    </div>
+    <div mdbCollapse [isCollapsed]="true" #seze="bs-collapse">
+      <div class="button-group-pills" data-toggle="buttons">
+        <label class="btn active">
+          <input type="radio" name="options" checked="" />
+          <div>1.5</div>
+        </label>
+        <label class="btn ">
+          <input type="radio" name="options" />
+          <div>2.5</div>
+        </label>
+        <label class="btn">
+          <input type="radio" name="options" />
+          <div>3.5</div>
+        </label>
+        <label class="btn">
+          <input type="radio" name="options" />
+          <div>5.5</div>
+        </label>
+      </div>
+    </div> -->
+
+    <!-- <div
+      class="filter-title waves-light"
+      (click)="brand.toggle()"
+      mdbWavesEffect
+    >
+      Brand
+    </div>
+    <div mdbCollapse [isCollapsed]="true" #brand="bs-collapse">
+      <div class="select-filter">
+        <tag-input
+          [ngModel]="[]"
+          [onlyFromAutocomplete]="true"
+          [placeholder]="'Add Brand'"
+          [secondaryPlaceholder]="'Choose Brand'"
+        >
+          <tag-input-dropdown
+            [showDropdownIfEmpty]="true"
+            [autocompleteItems]="['brand1', 'brand2', 'brand3']"
+          >
+          </tag-input-dropdown>
+        </tag-input>
+      </div>
+    </div> -->
+  </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,133 @@
+.carousel-caption {
+  position: absolute;
+  right: 70%;
+  left: 5%;
+  top: 0;
+  z-index: 1;
+  margin: 90px 0px;
+  color: #fff;
+  border-top: 10px solid;
+  border-bottom: 3px solid;
+  height: 300px;
+  text-align: left;
+}
+
+.carousel-caption h3 {
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 118%;
+}
+
+.banner-btn {
+  background: #ffffff;
+  color: #000000;
+  border-radius: unset;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 17px;
+  padding: 10px 30px;
+  margin: 0;
+}
+
+.banner-btn:hover {
+  background: #000000;
+  color: #ffffff;
+  border-radius: unset;
+}
+
+.carousel-item {
+  .view {
+    width: 100%;
+
+    video {
+      width: 100%;
+    }
+  }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .carousel-caption {
+    right: 47%;
+    margin: 10px 0px;
+    height: 260px;
+    padding-top: 5px;
+
+    h3 {
+      font-size: 24px;
+      line-height: 118%;
+    }
+
+    p {
+      display: none;
+    }
+
+    .banner-btn {
+      padding: 10px 20px;
+    }
+  }
+
+  .carousel-item {
+    .view {
+      width: 100%;
+
+      video {
+        max-width: 1000px;
+        height: 550px;
+        width: auto;
+      }
+    }
+  }
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 767px) {
+  .carousel-caption {
+    right: 55%;
+    margin: 10px 0px;
+    height: 260px;
+    padding-top: 5px;
+
+    h3 {
+      font-size: 24px;
+      line-height: 118%;
+    }
+
+    p {
+      display: none;
+    }
+
+    .banner-btn {
+      font-size: 10px;
+      line-height: 10px;
+      padding: 10px;
+    }
+  }
+
+  .carousel-item {
+    .view {
+      width: 100%;
+
+      video {
+        max-width: 1000px;
+        height: 550px;
+      }
+    }
+  }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .carousel-caption {
+    right: 70%;
+    height: 260px;
+
+    h3 {
+      font-weight: 600;
+      font-size: 25px;
+      line-height: 1.5;
+    }
+
+    p {
+      display: none;
+    }
+  }
+}

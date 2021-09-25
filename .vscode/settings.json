@@ -1,0 +1,8 @@
+{
+    "folders": [],
+    "settings": {},
+    "editor.autoIndent": false,
+    "editor.insertSpaces": false,
+		"editor.formatOnSave": true,
+		"prettier.disableLanguages": []
+}
